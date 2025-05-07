@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  zend:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/html
+    working_dir: /var/www/html
