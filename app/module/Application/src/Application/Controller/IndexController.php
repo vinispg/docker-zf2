@@ -9,13 +9,28 @@
 
 namespace Application\Controller;
 
+use Application\Service\MyService;
+use Application\Service\PessoaService;
+use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    protected $myService;
+    protected $pessoaService;
+    public function __construct(
+        MyService $myService,
+        PessoaService $pessoaService
+    )
+    {
+        $this->myService = $myService;
+        $this->pessoaService = $pessoaService;
+    }
     public function indexAction()
     {
+//        var_dump($this->pessoaService->getAdapter());
+        var_dump($this->pessoaService->getStatusConnection());
         return new ViewModel();
     }
 }

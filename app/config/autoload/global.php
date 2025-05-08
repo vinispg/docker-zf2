@@ -11,6 +11,20 @@
  * file.
  */
 
-return array(
-    // ...
-);
+return [
+    'db' => [
+        'driver'   => 'Pdo',
+        'dsn'      => 'pgsql:host=192.168.2.153;port=5432;dbname=meu_banco',
+        'username' => 'meu_usuario',
+        'password' => 'minha_senha',
+        'driver_options' => [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            Zend\Db\Adapter\Adapter::class => Zend\Db\Adapter\AdapterServiceFactory::class,
+        ],
+    ],
+];
+

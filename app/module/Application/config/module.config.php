@@ -9,6 +9,9 @@
 
 namespace Application;
 
+use Application\Controller\IndexController;
+use Application\Factory\Controller\IndexControllerFactory;
+
 return array(
     'router' => array(
         'routes' => array(
@@ -74,8 +77,8 @@ return array(
         ),
     ),
     'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class
+        'factories' => array(
+            'Application\Controller\Index' => IndexControllerFactory::class,
         ),
     ),
     'view_manager' => array(

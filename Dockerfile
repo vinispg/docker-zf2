@@ -1,6 +1,6 @@
 FROM php:5.6-apache
 
-# Remove referências quebradas e usa apenas repositório funcional de archive
+# Repositórios e pacotes
 RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list && \
     echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until && \
     apt-get update && \
@@ -9,8 +9,9 @@ RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.
         unzip \
         libzip-dev \
         libpng-dev \
-        libjpeg-dev && \
-    docker-php-ext-install zip mysqli pdo pdo_mysql && \
+        libjpeg-dev \
+        libpq-dev && \
+    docker-php-ext-install zip mysqli pdo pdo_mysql pdo_pgsql && \
     a2enmod rewrite
 
 # Instala Composer v1 (necessária pro PHP 5.6)

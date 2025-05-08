@@ -9,10 +9,13 @@
 
 namespace Application;
 
+use Application\Factory\Service\MyServiceFactory;
+use Application\Factory\Service\PessoaServiceFactory;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
-class Module
+class Module implements ServiceProviderInterface
 {
     public function onBootstrap(MvcEvent $e)
     {
@@ -35,5 +38,15 @@ class Module
                 ),
             ),
         );
+    }
+
+    public function getServiceConfig()
+    {
+        return [
+            'factories' => [
+                'Application\Service\MyService' => MyServiceFactory::class,
+                'Application\Service\PessoaService' => PessoaServiceFactory::class,
+            ]
+        ];
     }
 }
