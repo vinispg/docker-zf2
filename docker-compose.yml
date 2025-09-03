@@ -8,6 +8,10 @@ services:
     volumes:
       - ./app:/var/www/html
     working_dir: /var/www/html
+    depends_on:
+      - postgres
+    networks:
+      - pgsql_network
 
   postgres:
     image: postgres:9.6
@@ -21,4 +25,9 @@ services:
       - "5432:5432"
     volumes:
       - ./data/postgres_data:/var/lib/postgresql/data
+    networks:
+      - pgsql_network
 
+networks:
+  pgsql_network:
+    driver: bridge

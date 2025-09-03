@@ -14,7 +14,7 @@
 return [
     'db' => [
         'driver'   => 'Pdo',
-        'dsn'      => 'pgsql:host=192.168.2.153;port=5432;dbname=meu_banco',
+        'dsn'      => 'pgsql:host=postgres;port=5432;dbname=meu_banco',
         'username' => 'meu_usuario',
         'password' => 'minha_senha',
         'driver_options' => [

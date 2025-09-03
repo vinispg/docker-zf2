@@ -4,7 +4,7 @@ FROM php:5.6-apache
 RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list && \
     echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -y --allow-unauthenticated \
         git \
         unzip \
         libzip-dev \
